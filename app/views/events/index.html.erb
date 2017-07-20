@@ -1,9 +1,11 @@
-<h1>Event List</h1>
+<h1><%= t("event_list") %></h1>
 
 <ul>
   <% @events.each do |event| %>
     <li>
       <%= link_to event.name, event_path(event) %>
+      <!-- <%= event.created_at.strftime("%Y/%m/%d %I:%M %p") %> -->
+      <%= event.created_at.to_s %>
     </li>
   <% end %>
 </ul>
