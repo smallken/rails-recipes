@@ -1,4 +1,7 @@
 class Registration < ApplicationRecord
+  scope :by_status, ->(s){ where( :status => s ) }
+  scope :by_ticket, ->(t){ where( :ticket_id => t ) }
+  
   validate :check_event_status, :on => :create
   attr_accessor :current_step
   validates_presence_of :name, :email, :cellphone, :if => :should_validate_basic_data?
@@ -36,6 +39,6 @@ class Registration < ApplicationRecord
     if self.event.status == "draft"
       errors.add(:base, "活动尚未开放报名")
     end
-  end 
+  end
 
 end
