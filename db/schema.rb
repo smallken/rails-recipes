@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720090652) do
+ActiveRecord::Schema.define(version: 20170724084423) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20170720090652) do
     t.string   "friendly_id"
     t.string   "status",      default: "draft"
     t.integer  "category_id"
+    t.integer  "row_order"
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["friendly_id"], name: "index_events_on_friendly_id", unique: true
+    t.index ["row_order"], name: "index_events_on_row_order"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -58,6 +60,25 @@ ActiveRecord::Schema.define(version: 20170720090652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string   "status",     default: "pending"
+    t.string   "uuid"
+    t.integer  "event_id"
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "cellphone"
+    t.string   "website"
+    t.text     "bio"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["ticket_id"], name: "index_registrations_on_ticket_id"
+    t.index ["user_id"], name: "index_registrations_on_user_id"
+    t.index ["uuid"], name: "index_registrations_on_uuid", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|

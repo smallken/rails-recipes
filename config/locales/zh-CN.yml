@@ -1,4 +1,10 @@
 "zh-CN":
+  registration:
+    status:
+      pending: 报名尚未成功
+      confirmed: 报名成功
+  bulk_update: 批次编辑
+  bulk_delete: 批次删除
   event:
     status:
       draft: 草稿
