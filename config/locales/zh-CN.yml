@@ -10,6 +10,7 @@
     status:
       pending: 报名尚未成功
       confirmed: 报名成功
+      cancalled: 报名已取消
   bulk_update: 批次编辑
   bulk_delete: 批次删除
   event:

@@ -49,6 +49,8 @@ gem 'letter_opener'
 
 gem 'premailer-rails'
 
+gem 'sidekiq'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
