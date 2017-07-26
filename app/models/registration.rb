@@ -1,7 +1,8 @@
 class Registration < ApplicationRecord
+  has_paper_trail
   scope :by_status, ->(s){ where( :status => s ) }
   scope :by_ticket, ->(t){ where( :ticket_id => t ) }
-  
+
   validate :check_event_status, :on => :create
   attr_accessor :current_step
   validates_presence_of :name, :email, :cellphone, :if => :should_validate_basic_data?

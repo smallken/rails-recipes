@@ -1,6 +1,7 @@
 class Admin::EventTicketsController < AdminController
- 
+
     before_action :find_event
+    before_action :require_editor!
 
     def index
       @tickets = @event.tickets

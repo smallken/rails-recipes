@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726024403) do
+ActiveRecord::Schema.define(version: 20170726090043) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 20170726024403) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "registration_imports", force: :cascade do |t|
+    t.string   "status"
+    t.string   "csv_file"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "total_count"
+    t.integer  "success_count"
+    t.text     "error_messages"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["event_id"], name: "index_registration_imports_on_event_id"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.string   "status",     default: "pending"
     t.string   "uuid"
@@ -116,8 +129,20 @@ ActiveRecord::Schema.define(version: 20170726024403) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "time_zone"
+    t.string   "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",                         null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 1073741823
+    t.datetime "created_at"
+    t.text     "object_changes", limit: 1073741823
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
 end
