@@ -13,6 +13,12 @@
     <% end %>
   <% end %>
 
+<hr>
+  <ul>
+    <% @event.attachments.each do |a| %>
+      <li><%= link_to a.description, a.attachment.url %></li>
+    <% end %>
+    </ul>
 
 <%= sanitize @event.description %>
 
