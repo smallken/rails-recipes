@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.org/'
+source 'https://gems.ruby-china.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -50,8 +50,6 @@ gem 'letter_opener'
 gem 'premailer-rails'
 
 gem 'sidekiq'
-
-gem 'pg'
 
 gem "mysql2"
 
