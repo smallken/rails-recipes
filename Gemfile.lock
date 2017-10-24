@@ -152,6 +152,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    mysql2 (0.4.9)
     nested_form_fields (0.8.1)
       coffee-rails (>= 3.2.1)
       jquery-rails
@@ -318,6 +319,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mini_magick
+  mysql2
   nested_form_fields
   paper_trail
   pg
